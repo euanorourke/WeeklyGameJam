@@ -8,15 +8,7 @@ public class moveOnTouch : MonoBehaviour
     public GameObject player;
 
 
-    void Start()
-    {
-        
-    }
 
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider collision)
     {

@@ -8,13 +8,18 @@ public class loseScript : MonoBehaviour
     public GameObject player;
     public GameObject particle;
     private Renderer rend;
+    private AudioSource audio;
+    private bool isPlaying;
+    public AudioClip audioClip;
+
     void Start()
     {
         particle.SetActive(false);
+        isPlaying = false;
     }
 
 
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (transform.position.y < -10)
         {
@@ -22,11 +27,19 @@ public class loseScript : MonoBehaviour
             Rigidbody rbParticle = particle.gameObject.GetComponent<Rigidbody>();
             rend = GetComponent<Renderer>();
             rend.enabled = false; //Make player invisible
-
             rb.velocity = Vector3.zero;
             rbParticle.velocity = Vector3.zero; //Stop movement of the player and particleSystem
             particle.SetActive(true); //Enable Particles
+            rb.isKinematic = true;
+            AudioSource audio = GetComponent<AudioSource>();
+            if (!isPlaying)
+            {
+                audio.PlayOneShot(audioClip);
+                isPlaying = true;
+            }
             
+            
+
             StartCoroutine(SceneLoad(1f)); //Reloads scene 1 second after calling and allows particle system to fire
         }
 

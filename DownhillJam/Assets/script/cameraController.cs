@@ -7,7 +7,7 @@ public class cameraController : MonoBehaviour
     public Transform target;
     public float distance = 2.0f;
     public float xSpeed = 20.0f;
-    public float ySpeed = 20.0f;
+    public float ySpeed = 30.0f;
     public float yMinLimit = -90f;
     public float yMaxLimit = 90f;
     public float distanceMin = 10f;
@@ -30,7 +30,7 @@ public class cameraController : MonoBehaviour
             GetComponent<Rigidbody>().freezeRotation = true;
         }
     }
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (target)
         {

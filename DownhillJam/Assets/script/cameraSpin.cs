@@ -12,7 +12,7 @@ public class cameraSpin : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.RotateAround(target.transform.position, Vector3.up, 20 * Time.deltaTime);
     }
